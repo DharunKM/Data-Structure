@@ -1,0 +1,36 @@
+class Stack:
+ def __init__(self, max_size):
+ self.stack = []
+ self.max_size = max_size
+ def push(self, data):
+ if len(self.stack) == self.max_size:
+ print("Stack Overflow")
+ else:
+ self.stack.append(data)
+ def pop(self):
+ if self.stack:
+ print(f"Popped: {self.stack.pop()}")
+ else:
+ print("Stack Underflow")
+ def peek(self):
+ print(self.stack[-1] if self.stack else "Stack is empty")
+ def display(self):
+ print(self.stack if self.stack else "Stack is empty")
+if __name__ == "__main__":
+ stack = Stack(int(input("Enter max size of the stack: ")))
+ while True:
+ choice = int(input("\n 1. Push\n 2. Pop\n 3. Peek\n 4. 
+Display\n 5. Exit\nEnter choice: "))
+ if choice == 1:
+ stack.push(int(input("Enter data: ")))
+ elif choice == 2:
+ stack.pop()
+ elif choice == 3:
+ stack.peek()
+ elif choice == 4:
+ stack.display()
+ elif choice == 5:
+ print("Exiting....")
+ break
+ else:
+ print("Invalid choice")
