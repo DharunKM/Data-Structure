@@ -1,0 +1,33 @@
+class Node:
+ def __init__(self, val):
+ self.val = val
+ self.left = self.right = None
+class BST:
+ def __init__(self):
+ self.root = None
+ def add(self, val):
+ if not self.root:
+ self.root = Node(val)
+ else:
+ self._add_node(self.root, val)
+ def _add_node(self, node, val):
+ if val < node.val:
+ if node.left:
+ self._add_node(node.left, val)
+ else:
+ node.left = Node(val)
+ else:
+ if node.right:
+ self._add_node(node.right, val)
+ else:
+ node.right = Node(val)
+ def show(self, node, lvl=0):
+ if node:
+ self.show(node.right, lvl + 1)
+ print(' ' * 4 * lvl + '->', node.val)
+ self.show(node.left, lvl + 1)
+bst = BST()
+for v in [7, 5, 4, 3, 2, 1]:
+ bst.add(v)
+print("Constructed BST:")
+bst.show(bst.root)
