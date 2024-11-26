@@ -1,0 +1,40 @@
+print('Merge Sort: ') 
+A = []
+n = int(input('Enter Number of Elements in the List: ')) 
+for i in range(0, n): 
+ x = int(input('Enter the Element %d :' %(i+1))) 
+ A.append(x) 
+print('Original List: ') 
+print(A) 
+def Merge(left, right, A): 
+ i = j = k = 0 
+ while(i < len(left) and j < len(right)): 
+ if(left[i] < right[j]): 
+ A[k] = left[i] 
+ i = i + 1 
+ else: 
+ A[k] = right[j] 
+ j += 1 
+ k += 1 
+ while(i < len(left)): 
+ A[k] = left[i] 
+ i += 1 
+ k += 1 
+ while(j < len(right)): 
+ A[k] = right[j] 
+ j += 1 
+ k += 1 
+ print('Merging', A) 
+def MergeSort(A): 
+ print('Splitting', A) 
+ n = len(A) 
+ if(n > 1): 
+ mid = n // 2 
+ left = A[:mid] 
+ right = A[mid:] 
+ MergeSort(left)
+ MergeSort(right) 
+ Merge(left, right, A) 
+MergeSort(A) 
+print("Sorted List:\n")
+print(A)
