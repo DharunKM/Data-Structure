@@ -1,0 +1,36 @@
+class Queue:
+ def __init__(self, max_size):
+ self.queue = []
+ self.max_size = max_size
+ def enqueue(self, data):
+ if len(self.queue) == self.max_size:
+ print("Queue Overflow")
+ else:
+ self.queue.append(data)
+ def dequeue(self):
+ if self.queue:
+ print(f"Dequeued: {self.queue.pop(0)}")
+ else:
+ print("Queue Underflow")
+ def front(self):
+ print(self.queue[0] if self.queue else "Queue is empty")
+ def display(self):
+ print(self.queue if self.queue else "Queue is empty")
+if __name__ == "__main__":
+ queue = Queue(int(input("Enter max size of the queue: ")))
+ while True:
+ choice = int(input("\n1. Enqueue\n2. Dequeue\n3. Front\n4. 
+Display\n5. Exit\nEnter choice: "))
+ if choice == 1:
+ queue.enqueue(int(input("Enter data: ")))
+ elif choice == 2:
+ queue.dequeue()
+ elif choice == 3:
+ queue.front()
+ elif choice == 4:
+ queue.display()
+ elif choice == 5:
+ print(“Exiting……”)
+ break
+ else:
+ print("Invalid choice")
